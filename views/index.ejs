@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+<div class="container marketing">
+  <!-- Three columns of text below the carousel -->
+
+  <div class="row">
+    <% if (messages && messages.length > 0) { %>
+      <% messages.forEach(element => { %>
+        <div class="col-lg-4">
+          <h2 class="fw-normal"><%= element.title %></h2>
+          <p>
+            <%= element.text%>
+          </p>
+          <% if (user && user.membership_status) { %> 
+            <small>
+              <p>Written by <%= element.first_name%> <%= element.last_name%>  on <%= element.timestamp %></p>
+            </small>
+          <% } else { %>
+            <small>
+              <p>Join the club to see the date this was posted</p>
+              <p>and the author of the message.</p>
+            </small>
+          <% } %>
+          <% if (user && user.admin) { %>
+            <form action="/delete-message" method="POST">
+            <input type="hidden" name="message_id" value="<%=element.id%>">
+            <div>
+              <button class="btn btn-primary danger" type="submit">
+                Delete this message
+              </button>
+            </div>
+          </form>
+          <% } %>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>No messages available.</p>
+    <% } %>
+  </div>
+
+  <%- include('partials/footer') %>
+</div>

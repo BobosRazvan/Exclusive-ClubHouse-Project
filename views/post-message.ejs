@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+<form action="/post-message" method="POST">
+    <div class="mb-3">
+        <label for="titleInput" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="titleInput"
+          name="title"
+          placeholder="Enter the title"
+        />
+      </div>
+    <div class="mb-3">
+      <label for="messageInput" class="form-label">Message</label>
+      <input
+        type="text"
+        class="form-control"
+        id="messageInput"
+        name="message"
+        placeholder="Enter your message"
+      />
+    </div>
+  
+    <div>
+      <button class="btn btn-primary w-100 py-2" type="submit">
+        Post message
+      </button>
+    </div>
+  </form>
+<%- include('partials/footer') %>
